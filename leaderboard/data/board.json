@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-09T14:05:55.064805+05:30",
-  "nextUpdateAt": "2026-09-09T15:05:55.064805+05:30",
+  "generatedAt": "2026-09-09T17:39:55.895608+05:30",
+  "nextUpdateAt": "2026-09-09T18:39:55.895608+05:30",
   "timezone": "Asia/Kolkata",
   "period": "2026-08-01 to 2026-09-09",
-  "source": "Slack \u00b7 Aug 1\u2013Sep 9 \u00b7 L2 replies \u00b7 @ecliptos-support \u00b7 snapshot 09 Sep 2026, 14:05 IST",
+  "source": "Slack \u00b7 Aug 1\u2013Sep 9 \u00b7 L2 replies \u00b7 @ecliptos-support \u00b7 snapshot 09 Sep 2026, 17:39 IST",
   "onShiftNow": {
-    "name": "Arun Yadav",
-    "shift": "Morning",
-    "window": "06:00\u201315:00 IST"
+    "name": "Mahesh Suse",
+    "shift": "Evening",
+    "window": "15:00\u201300:00 IST"
   },
   "sharePoint": {
     "placeholder": true,
@@ -16,8 +16,8 @@
     "localList": "list.html",
     "csv": "data/sharepoint-list.csv",
     "refreshMinutes": 60,
-    "updatedAt": "2026-09-09T14:05:55.064805+05:30",
-    "nextUpdateAt": "2026-09-09T15:05:55.064805+05:30"
+    "updatedAt": "2026-09-09T17:39:55.895608+05:30",
+    "nextUpdateAt": "2026-09-09T18:39:55.895608+05:30"
   },
   "places": [
     {
@@ -93,6 +93,66 @@
     }
   ],
   "issues": [
+    {
+      "id": "inception-1788954553914719",
+      "place": "inception",
+      "title": "Expand cloud workspace disk beyond 32 GB",
+      "reporter": "Jon Thorbjarnarson",
+      "assignee": "Mahesh Suse",
+      "status": "resolved",
+      "opened": "2026-09-09 17:19 IST",
+      "updated": "2026-09-09 17:22 IST",
+      "replies": 4,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788954553914719"
+    },
+    {
+      "id": "inception-1788952614052819",
+      "place": "inception",
+      "title": "Share Inception dashboard via SharePoint without republishing HTML",
+      "reporter": "Raina Mohalanobish",
+      "assignee": "Mahesh Suse",
+      "status": "resolved",
+      "opened": "2026-09-09 16:46 IST",
+      "updated": "2026-09-09 17:00 IST",
+      "replies": 1,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788952614052819"
+    },
+    {
+      "id": "inception-1788952089609189",
+      "place": "inception",
+      "title": "Error when creating a new workspace",
+      "reporter": "Natacha Lopes",
+      "assignee": "Mahesh Suse",
+      "status": "waiting_confirmation",
+      "opened": "2026-09-09 16:38 IST",
+      "updated": "2026-09-09 16:59 IST",
+      "replies": 2,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788952089609189"
+    },
+    {
+      "id": "inception-1788950211768129",
+      "place": "inception",
+      "title": "mail_send missing on Outlook MCP in cloud workspaces",
+      "reporter": "Akshay Asija",
+      "assignee": "Mahesh Suse",
+      "status": "waiting_confirmation",
+      "opened": "2026-09-09 16:06 IST",
+      "updated": "2026-09-09 16:32 IST",
+      "replies": 5,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788950211768129"
+    },
+    {
+      "id": "inception-1788947720408219",
+      "place": "inception",
+      "title": "SmartShare-style curated client content on KNOW connector",
+      "reporter": "Jedrzej Godynicki",
+      "assignee": "Mahesh Suse",
+      "status": "resolved",
+      "opened": "2026-09-09 15:25 IST",
+      "updated": "2026-09-09 15:34 IST",
+      "replies": 3,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788947720408219"
+    },
     {
       "id": "inception-1788916334148589",
       "place": "inception",

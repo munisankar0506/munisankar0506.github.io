@@ -1,4 +1,9 @@
 Place,Title,Status,Assignee,Reporter,Opened,Updated,Slack URL
+Inception,Expand cloud workspace disk beyond 32 GB,resolved,Mahesh Suse,Jon Thorbjarnarson,2026-09-09 17:19 IST,2026-09-09 17:22 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788954553914719
+Inception,Share Inception dashboard via SharePoint without republishing HTML,resolved,Mahesh Suse,Raina Mohalanobish,2026-09-09 16:46 IST,2026-09-09 17:00 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788952614052819
+Inception,Error when creating a new workspace,waiting_confirmation,Mahesh Suse,Natacha Lopes,2026-09-09 16:38 IST,2026-09-09 16:59 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788952089609189
+Inception,mail_send missing on Outlook MCP in cloud workspaces,waiting_confirmation,Mahesh Suse,Akshay Asija,2026-09-09 16:06 IST,2026-09-09 16:32 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788950211768129
+Inception,SmartShare-style curated client content on KNOW connector,resolved,Mahesh Suse,Jedrzej Godynicki,2026-09-09 15:25 IST,2026-09-09 15:34 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788947720408219
 Inception,Cursor / Inception cloud browser is headless — FlightAware login,in_progress,Arun Yadav,Dany El Khoury,2026-09-09 06:42 IST,2026-09-09 08:05 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788916334148589
 Inception,MCP mTLS cert picker intermittently returns no client cert,in_progress,Harshita Jain,Ron Rabin,2026-09-09 03:18 IST,2026-09-09 05:31 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788904081590169
 Inception,Colleague cannot see shared cloud workspace,resolved,Harshita Jain,Elaine Dang,2026-09-09 04:35 IST,2026-09-09 05:10 IST,https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788908733249009
