@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content="3600" />
+  <title>L2 support leadership board · EcliptOS &amp; Inception</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c1118;
+      --bg-elev: #141b25;
+      --line: rgba(232, 236, 243, 0.08);
+      --text: #eef2f7;
+      --muted: #93a0b5;
+      --now: #f3b14e;
+      --next: #7eb6ff;
+      --ok: #5fd4a8;
+      --danger: #f07178;
+      --wait: #c9b27a;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Instrument Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap { width: min(1280px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 56px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .kicker {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1 { font-size: 28px; font-weight: 650; letter-spacing: -0.03em; margin: 0; }
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .clock {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+      text-align: right;
+    }
+    .clock small { color: var(--muted); font-size: 13px; margin-left: 8px; }
+
+    .refresh-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    button:hover { border-color: var(--next); color: var(--next); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .stat .n { font-size: 32px; font-weight: 650; letter-spacing: -0.04em; }
+    .stat .n.person { font-size: 22px; line-height: 1.2; }
+    .stat .l { color: var(--muted); margin-top: 4px; font-size: 13px; }
+
+    .card {
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 20px 8px;
+      margin-bottom: 16px;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    td.num {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .name { font-weight: 600; }
+    .name a { color: inherit; text-decoration: none; }
+    .name a:hover { color: var(--next); }
+    .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .count { font-family: "IBM Plex Mono", monospace; font-size: 22px; }
+    .opened { color: var(--next); }
+    .resolved { color: var(--ok); }
+    .waiting { color: var(--wait); }
+
+    .grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 16px; }
+    .places { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px; }
+
+    .sharepoint {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      padding-bottom: 18px;
+    }
+    .sharepoint .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .sharepoint a {
+      color: var(--next);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+    .sharepoint a:hover { border-color: var(--next); }
+    .sharepoint .note { color: var(--muted); font-size: 13px; max-width: 640px; line-height: 1.45; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .pill.in_progress { color: var(--now); }
+    .pill.waiting_confirmation { color: var(--wait); }
+    .pill.resolved { color: var(--ok); }
+    .pill.ecliptos { color: var(--next); }
+    .pill.inception { color: var(--ok); }
+
+    .issue {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .issue:last-child { border-bottom: 0; }
+    .issue a { color: inherit; text-decoration: none; }
+    .issue a:hover { color: var(--next); }
+    .issue .title { font-weight: 550; line-height: 1.35; }
+    .issue .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .worker-row.current td { background: rgba(243, 177, 78, 0.06); }
+    .ongoing { color: var(--now); }
+    .ongoing a { color: inherit; text-decoration: none; }
+    .ongoing a:hover { color: var(--next); }
+
+    .foot {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .foot a { color: inherit; }
+
+    @media (max-width: 960px) {
+      header, .stats, .grid, .places, .foot, .sharepoint { display: block; }
+      .stat, .card { margin-bottom: 12px; }
+      .clock { text-align: left; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="kicker">EcliptOS &amp; Inception · L2 leadership board</div>
+        <h1>L2 support leadership board</h1>
+      </div>
+      <div>
+        <div class="clock" id="clock">--:--:-- <small>IST</small></div>
+        <div class="kicker" id="source">Loading Slack snapshot…</div>
+        <div class="refresh-bar">
+          <span class="sub" id="age">Refreshing every 60s</span>
+          <button type="button" id="refresh">Refresh now</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <section class="card sharepoint" id="sharepoint"></section>
+
+    <section class="card">
+      <h2>Assigned workers · counts since 1 Aug 2026</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Assigned worker</th>
+            <th>Opened</th>
+            <th>Resolved</th>
+            <th>Waiting for confirmation</th>
+            <th>Current ongoing</th>
+          </tr>
+        </thead>
+        <tbody id="workers"></tbody>
+        <tfoot id="totals"></tfoot>
+      </table>
+    </section>
+
+    <div class="places">
+      <section class="card">
+        <h2>EcliptOS · all issues since August</h2>
+        <div id="ecliptos"></div>
+      </section>
+      <section class="card">
+        <h2>Inception · all issues since August</h2>
+        <div id="inception"></div>
+      </section>
+    </div>
+
+    <div class="places" style="margin-top:16px">
+      <section class="card">
+        <h2>EcliptOS · open or waiting</h2>
+        <div id="ecliptos-open"></div>
+      </section>
+      <section class="card">
+        <h2>Inception · open or waiting</h2>
+        <div id="inception-open"></div>
+      </section>
+    </div>
+
+    <div class="foot">
+      <div>Opened = unique parent threads Arun Yadav, Harshita Jain, Mahesh Suse, Kiran Rathod, or Tammisetti Sundar replied to. Inception = their replies in #inception-community. EcliptOS = threads tagged @ecliptos-support that one of them replied to. GitHub Actions pulls those two Slack channels every hour.</div>
+      <div>
+        <a href="https://mckinsey.enterprise.slack.com/archives/C09AYV10Y9J">EcliptOS channel</a>
+        ·
+        <a href="https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY">Inception channel</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const TZ = "Asia/Kolkata";
+    const STATUS = {
+      in_progress: "In progress",
+      waiting_confirmation: "Waiting for confirmation",
+      waiting: "Waiting for confirmation",
+      answered: "Waiting for confirmation",
+      resolved: "Resolved"
+    };
+
+    function pad(n) { return String(n).padStart(2, "0"); }
+
+    function tick() {
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        timeZone: TZ, hour: "2-digit", minute: "2-digit", second: "2-digit",
+        weekday: "short", day: "numeric", month: "short", hourCycle: "h23"
+      });
+      const parts = Object.fromEntries(fmt.formatToParts(new Date()).map((p) => [p.type, p.value]));
+      document.getElementById("clock").innerHTML =
+        `${parts.hour}:${parts.minute}:${parts.second} <small>IST · ${parts.weekday} ${parts.day} ${parts.month}</small>`;
+    }
+
+    function pill(text, cls) {
+      return `<span class="pill ${cls || ""}">${text}</span>`;
+    }
+
+    function placeName(place) {
+      return place === "ecliptos" ? "EcliptOS" : "Inception";
+    }
+
+    function issueCard(issue) {
+      return `<article class="issue">
+        <a class="title" href="${issue.url}" target="_blank" rel="noreferrer">${issue.title}</a>
+        <div class="meta">
+          ${pill(placeName(issue.place), issue.place)}
+          ${pill(STATUS[issue.status] || issue.status, issue.status)}
+          <span>${issue.assignee}</span>
+          <span>${issue.reporter}</span>
+          <span>${issue.updated}</span>
+        </div>
+      </article>`;
+    }
+
+    function isWaiting(status) {
+      return status === "waiting_confirmation" || status === "waiting";
+    }
+
+    function isL2(name) {
+      return name && name !== "Unassigned";
+    }
+
+    function countsFor(issues) {
+      return {
+        opened: issues.length,
+        resolved: issues.filter((i) => i.status === "resolved").length,
+        waiting: issues.filter((i) => isWaiting(i.status)).length,
+        inProgress: issues.filter((i) => i.status === "in_progress").length
+      };
+    }
+
+    function currentFor(worker, issues) {
+      const mine = issues.filter((i) => i.assignee === worker.name);
+      return mine.find((i) => i.status === "in_progress")
+        || mine.find((i) => isWaiting(i.status))
+        || null;
+    }
+
+    function render(board) {
+      document.getElementById("source").textContent = board.source;
+      const issues = (board.issues || []).filter((i) => isL2(i.assignee));
+      const all = countsFor(issues);
+      const openNow = issues.filter((i) => i.status === "in_progress" || isWaiting(i.status));
+      const sp = board.sharePoint || {};
+      document.getElementById("sharepoint").innerHTML = `
+        <div>
+          <h2>SharePoint issue list · placeholder</h2>
+          <div class="note">Categorized EcliptOS and Inception issues. GitHub Actions pulls Slack every hour when <code>SLACK_TOKEN</code> is set. Reloading the page only re-reads the last snapshot.</div>
+        </div>
+        <div class="actions">
+          <a href="list.html">Open categorized list</a>
+          <a href="${sp.url || "#"}" target="_blank" rel="noreferrer">SharePoint link</a>
+          <a href="${sp.csv || "data/sharepoint-list.csv"}">Download CSV</a>
+        </div>
+      `;
+
+      document.getElementById("stats").innerHTML = `
+        <div class="stat"><div class="n">${all.opened}</div><div class="l">Opened</div></div>
+        <div class="stat"><div class="n">${all.resolved}</div><div class="l">Resolved</div></div>
+        <div class="stat"><div class="n">${all.waiting}</div><div class="l">Awaiting confirmation</div></div>
+        <div class="stat"><div class="n person">${board.onShiftNow.name}</div><div class="l">On shift now · ${board.onShiftNow.shift}</div></div>
+      `;
+
+      let totOpened = 0, totResolved = 0, totWaiting = 0;
+      document.getElementById("workers").innerHTML = board.workers.map((w) => {
+        const mine = issues.filter((i) => i.assignee === w.name && isL2(w.name));
+        const c = countsFor(mine);
+        totOpened += c.opened;
+        totResolved += c.resolved;
+        totWaiting += c.waiting;
+        const current = currentFor(w, issues);
+        return `<tr class="${current && current.status === "in_progress" ? "worker-row current" : ""}">
+          <td>
+            <div class="name"><a href="worker.html?id=${w.id}" target="_blank" rel="noreferrer">${w.name}</a></div>
+            <div class="sub">${w.role}</div>
+          </td>
+          <td class="num opened">${c.opened}</td>
+          <td class="num resolved">${c.resolved}</td>
+          <td class="num waiting">${c.waiting}</td>
+          <td>${current ? `<div class="ongoing"><a href="${current.url}" target="_blank" rel="noreferrer">${current.title}</a></div><div class="sub">${STATUS[current.status]} · ${current.place === "ecliptos" ? "EcliptOS" : "Inception"}</div>` : `<span class="sub">No open ticket on this snapshot</span>`}</td>
+        </tr>`;
+      }).join("");
+
+      document.getElementById("totals").innerHTML = `
+        <tr>
+          <td><div class="name">Total</div><div class="sub">${issues.length} unique Slack issues</div></td>
+          <td class="num opened">${totOpened}</td>
+          <td class="num resolved">${totResolved}</td>
+          <td class="num waiting">${totWaiting}</td>
+          <td></td>
+        </tr>`;
+
+      const byUpdated = (a, b) => (b.updated || "").localeCompare(a.updated || "");
+      document.getElementById("ecliptos").innerHTML = issues.filter((i) => i.place === "ecliptos").sort(byUpdated).map(issueCard).join("");
+      document.getElementById("inception").innerHTML = issues.filter((i) => i.place === "inception").sort(byUpdated).map(issueCard).join("");
+      document.getElementById("ecliptos-open").innerHTML = openNow.filter((i) => i.place === "ecliptos").map(issueCard).join("") || `<div class="sub">None open</div>`;
+      document.getElementById("inception-open").innerHTML = openNow.filter((i) => i.place === "inception").map(issueCard).join("") || `<div class="sub">None open</div>`;
+    }
+
+    async function load() {
+      const r = await fetch(`data/board.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      const board = await r.json();
+      render(board);
+      const snap = board.generatedAt ? new Date(board.generatedAt).toLocaleString("en-GB", {
+        timeZone: TZ, day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+      }) : "unknown";
+      const next = board.nextUpdateAt ? new Date(board.nextUpdateAt).toLocaleTimeString("en-GB", {
+        timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+      }) : "";
+      document.getElementById("age").textContent = `Slack snapshot ${snap} IST${next ? ` · next pull ${next} IST` : ""}`;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+    load().catch(() => {
+      document.getElementById("source").textContent = "Could not load data/board.json";
+    });
+    setInterval(() => {
+      load().catch(() => {});
+    }, 3600000);
+    document.getElementById("refresh").addEventListener("click", () => {
+      load().catch(() => {
+        document.getElementById("source").textContent = "Could not load data/board.json";
+      });
+    });
+  </script>
+</body>
+</html>
