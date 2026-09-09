@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="refresh" content="3600" />
+  <meta http-equiv="refresh" content="60" />
   <title>Issue list · EcliptOS &amp; Inception</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -177,7 +177,7 @@
     load().catch(() => {
       document.getElementById("source").textContent = "Could not load data/board.json";
     });
-    setInterval(() => { load().catch(() => {}); }, 3600000);
+    setInterval(() => { load().catch(() => {}); }, 60000);
   </script>
 </body>
 </html>

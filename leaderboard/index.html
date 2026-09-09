@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="refresh" content="3600" />
+  <meta http-equiv="refresh" content="60" />
   <title>L2 support leadership board · EcliptOS &amp; Inception</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -277,7 +277,7 @@
     </div>
 
     <div class="foot">
-      <div>Opened = unique parent threads Arun Yadav, Harshita Jain, Mahesh Suse, Kiran Rathod, or Tammisetti Sundar replied to. Inception = their replies in #inception-community. EcliptOS = threads tagged @ecliptos-support that one of them replied to. This HTTPS board is local only and is not published on public GitHub.</div>
+      <div>Opened = unique parent threads Arun Yadav, Harshita Jain, Mahesh Suse, Kiran Rathod, or Tammisetti Sundar replied to. Inception = their replies in #inception-community. EcliptOS = threads tagged @ecliptos-support that one of them replied to. The hosted board refreshes itself every minute after Slack is pulled.</div>
       <div>
         <a href="https://mckinsey.enterprise.slack.com/archives/C09AYV10Y9J">EcliptOS channel</a>
         ·
@@ -362,7 +362,7 @@
       document.getElementById("sharepoint").innerHTML = `
         <div>
           <h2>SharePoint issue list · placeholder</h2>
-          <div class="note">Categorized EcliptOS and Inception issues. Refresh reloads the last Slack snapshot. The source repo stays private.</div>
+          <div class="note">The page reloads Slack counts every 60 seconds from the last published snapshot. GitHub Actions pulls both Slack channels every hour and updates this hosted board.</div>
         </div>
         <div class="actions">
           <a href="list.html">Open categorized list</a>
@@ -435,7 +435,7 @@
     });
     setInterval(() => {
       load().catch(() => {});
-    }, 3600000);
+    }, 60000);
     document.getElementById("refresh").addEventListener("click", () => {
       load().catch(() => {
         document.getElementById("source").textContent = "Could not load data/board.json";

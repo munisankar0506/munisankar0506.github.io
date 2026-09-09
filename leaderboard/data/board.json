@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-09T17:39:55.895608+05:30",
-  "nextUpdateAt": "2026-09-09T18:39:55.895608+05:30",
+  "generatedAt": "2026-09-09T18:39:39.091296+05:30",
+  "nextUpdateAt": "2026-09-09T19:39:39.091296+05:30",
   "timezone": "Asia/Kolkata",
   "period": "2026-08-01 to 2026-09-09",
-  "source": "Slack \u00b7 Aug 1\u2013Sep 9 \u00b7 L2 replies \u00b7 @ecliptos-support \u00b7 snapshot 09 Sep 2026, 17:39 IST",
+  "source": "Slack \u00b7 Aug 1\u2013Sep 9 \u00b7 L2 replies \u00b7 @ecliptos-support \u00b7 snapshot 09 Sep 2026, 18:39 IST",
   "onShiftNow": {
     "name": "Mahesh Suse",
     "shift": "Evening",
@@ -16,8 +16,8 @@
     "localList": "list.html",
     "csv": "data/sharepoint-list.csv",
     "refreshMinutes": 60,
-    "updatedAt": "2026-09-09T17:39:55.895608+05:30",
-    "nextUpdateAt": "2026-09-09T18:39:55.895608+05:30"
+    "updatedAt": "2026-09-09T18:39:39.091296+05:30",
+    "nextUpdateAt": "2026-09-09T19:39:39.091296+05:30"
   },
   "places": [
     {
@@ -93,6 +93,30 @@
     }
   ],
   "issues": [
+    {
+      "id": "inception-1788957696659799",
+      "place": "inception",
+      "title": "Slack MCP Allow button greyed out on consent screen",
+      "reporter": "Jana Williams",
+      "assignee": "Mahesh Suse",
+      "status": "waiting_confirmation",
+      "opened": "2026-09-09 18:11 IST",
+      "updated": "2026-09-09 18:23 IST",
+      "replies": 1,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788957696659799"
+    },
+    {
+      "id": "inception-1788956203014669",
+      "place": "inception",
+      "title": "Open an old workspace whose folder is .claude not .inception",
+      "reporter": "Charlotte Vandenberghe",
+      "assignee": "Mahesh Suse",
+      "status": "resolved",
+      "opened": "2026-09-09 17:46 IST",
+      "updated": "2026-09-09 17:55 IST",
+      "replies": 2,
+      "url": "https://mckinsey.enterprise.slack.com/archives/C0AJ2BBE3MY/p1788956203014669"
+    },
     {
       "id": "inception-1788954553914719",
       "place": "inception",
